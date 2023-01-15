@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+}
+
+.delete-icon{
+  color:red;
+}
+
+.delete-icon:hover{
+  color:darkred;
+  cursor: pointer;
+}
+
+
+
+.tasksProgetto {
+  text-align: center;
+  margin: 50px 0;
+}
+
+/*
+TEST. HO COMMENTATO PER VEDERE SE FUNZIONASSE :host ::ng-deep impostato nel css di projectsComponent. ng-deep fa in modo di applicare la regola css anche ai components figli
+  .tasksProgetto h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 30px;
+  color: #393939;
+} */
+
+tr, th, th.mat-header-cell{
+  text-align: center;
+}

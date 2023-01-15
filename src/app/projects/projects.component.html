@@ -1,0 +1,51 @@
+
+<div class="tasksProgetto">
+  <h1>NgRx: {{ ongoingTraining$ | async }}</h1>
+  <h2>Tutti i progetti</h2>
+  <mat-form-field>
+    <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Filtro" class="input-tasks">
+  </mat-form-field>
+  </div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="available_hours">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ore a disposizione </th>
+    <td mat-cell *matCellDef="let element"> {{element.available_hours}} </td>
+  </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon (click)="handleDelete(element.id)" class="delete-icon">delete</mat-icon>
+        <a routerLink='/add-project/{{element.id}}'><mat-icon class="edit-icon">edit</mat-icon></a>
+        <a routerLink='/dashboard/{{element.id}}'><mat-icon *ngIf="element.tasks" class="show-icon">remove_red_eye</mat-icon></a>
+      </td>
+    </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="add-tasks">
+    <th mat-header-cell *matHeaderCellDef> Tasks </th>
+    <td mat-cell *matCellDef="let element"><a routerLink="/add-tasks/{{element.id}}">Aggiungi Tasks</a></td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+showFirstLastButtons
+aria-label="Select page of periodic elements">
+</mat-paginator>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,44 @@
+<form action="" [formGroup]="reactiveform" (ngSubmit)="handleAdd()">
+  <div class="row"  *ngIf="showMsg">
+    <div class="col-xs-12">
+      <p class="alert alert-success">
+        Tasks aggiunto con successo
+      </p>
+    </div>
+  </div>
+  <h3>Ore ancora a disposizione per il progetto {{currentProject.name}}: {{currentProject.available_hours}}</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Progetto</mat-label>
+    <mat-select formControlName="progetto" (selectionChange)="handleChange($any($event).value)">
+      <mat-option *ngFor="let project of allProjects" [value]="project.id">{{project.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Nome attività</mat-label>
+  <input matInput formControlName="nome">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Ore impiegate</mat-label>
+  <input matInput type="number" formControlName="ore">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Data</mat-label>
+  <input matInput formControlName="data">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Ticket</mat-label>
+  <input matInput formControlName="ticket">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Gestito da</mat-label>
+  <mat-select formControlName="dipendente">
+    <mat-option *ngFor="let name of enumKeys" [value]="dipendenti[name]">{{dipendenti[name]}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Commento</mat-label>
+  <textarea matInput formControlName="commento"></textarea>
+</mat-form-field>
+
+<button mat-raised-button color="primary" type="submit">Aggiungi</button>
+</form>

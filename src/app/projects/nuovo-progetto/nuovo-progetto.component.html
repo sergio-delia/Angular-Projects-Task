@@ -1,0 +1,24 @@
+<section class="compile-form">
+
+  <form action="" [formGroup]="reactiveform" (ngSubmit)="handleAdd()">
+    <h2 *ngIf="id">Modifica progetto</h2>
+    <h2 *ngIf="!id">Aggiungi un progetto</h2>
+    <div class="row"  *ngIf="showMsg">
+      <div class="col-xs-12">
+        <p class="alert alert-success">
+        Progetto aggiunto con successo
+      </p>
+    </div>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome progetto</mat-label>
+  <input matInput formControlName="nome">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Ore a disposizione</mat-label>
+  <input matInput type="number" formControlName="ore">
+</mat-form-field>
+<button mat-raised-button color="primary" type="submit" [disabled]="!reactiveform.valid">Aggiungi</button>
+</form>
+
+</section>

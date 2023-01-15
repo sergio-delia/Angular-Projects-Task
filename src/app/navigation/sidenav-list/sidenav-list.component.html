@@ -1,0 +1,26 @@
+<mat-nav-list>
+  <a *ngIf="!isAuth" mat-list-item routerLink="/signup" (click)="onClose()">
+    <mat-icon>face</mat-icon>
+    <span class="nav-caption">Signup</span>
+  </a>
+  <a *ngIf="!isAuth" mat-list-item routerLink="/login" (click)="onClose()">
+    <mat-icon>input</mat-icon>
+    <span class="nav-caption">Login</span>
+  </a>
+  <a *ngIf="isAuth" mat-list-item routerLink="/dashboard" (click)="onClose()">
+    <mat-icon>assignment</mat-icon>
+    <span class="nav-caption">Dashboard</span>
+  </a>
+  <a *ngIf="isAuth" mat-list-item routerLink="/add-project" (click)="onClose()">
+    <mat-icon>work</mat-icon>
+    <span class="nav-caption">Add Project</span>
+  </a>
+  <a *ngIf="isAuth" mat-list-item routerLink="/tasks" (click)="onClose()">
+    <mat-icon>format_list_numbered</mat-icon>
+    <span class="nav-caption">Tasks</span>
+  </a>
+  <a mat-list-item *ngIf="isAuth" (click)="onLogout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span class="nav-caption">Logout</span>
+    </a>
+</mat-nav-list>
